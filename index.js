@@ -68,19 +68,20 @@ search.addEventListener("click",(e)=>{
 
 function getChannelDetails(dashBoard){
     document.querySelector(".channelsearch").addEventListener("click",(e)=>{
-
+        e.preventDefault();
+        console.log("hello word in get channel")
         var channelIdCode = document.querySelector("#channelSearch").value;
         
         if(channelIdCode.length>0){
-                
+            console.log("hello word in get channel")
             var baseUrl = "https://www.googleapis.com/youtube/v3/channels?part=snippet,statistics,contentDetails&key=AIzaSyDhIf5_HQYvNxsMTZo9ptc3iUlJdxx0cIQ";
             var response =  fetch(baseUrl+"&id="+channelIdCode);
             response.then((jsondata)=>{
                 return jsondata.json();
             }).then((data)=>{
-    
+                console.log("hello word in get channel")
                 element=data.items[0];
-                
+                console.log("hello word in get channel", element)
                 let innerhtml=`
                 <div class=" videos col-sm col-md col-lg col-xl shadow-lg">
                 <img width="420px" height="310px" src= "${element.snippet.thumbnails.high.url}"></img>
